@@ -15,7 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/ticket', 'TicketController@viewForm')->name('ticket');
+Route::get('/ticket', 'TicketController@showForm')->name('ticket');
+Route::post('/ticket', 'TicketController@store')->name('ticketPost');
+Route::post('/ticket/confirm', 'TicketController@confirm')->name('ticket.confirm');
 
 Auth::routes();
 

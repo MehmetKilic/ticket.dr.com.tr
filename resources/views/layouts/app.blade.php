@@ -10,9 +10,10 @@
     <title>{{ config('app.name', 'Ticket Management') }}</title>
 
     <!-- Scripts -->
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="{{ asset('public/js/app.js') }}" defer></script>
+    <script src="{{ asset('public/js/bootstrap-tagsinput.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -22,38 +23,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
-    <style>
-        .test{
-            padding-top: 10px;
-            padding-bottom: 10px;
-            background-color: #eee;
-            background-color: rgba(86,61,124,.15);
-            border: 1px solid #ddd;
-            border: 1px solid rgba(86,61,124,.2);
-        };
-        @media only screen and (max-width: 768px) {
-            .kisiGorsel {
-                float:none;
-            }
-        }
-        @media only screen and (min-width: 768px) {
-            .kisiGorsel {
-                float:right;
-            }
-        }
-        .img-cerceve {
-            display: inline-block;
-            height: auto;
-            padding: 4px;
-            line-height: 1.42857143;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            -webkit-transition: all .2s ease-in-out;
-            -o-transition: all .2s ease-in-out;
-            transition: all .2s ease-in-out;
-        }
-    </style>
+    <link href="{{ asset('public/css/bootstrap-tagsinput.css') }}" rel="stylesheet">
+    @yield('styles')
 </head>
 <body>
 <div id="app">
@@ -121,5 +92,6 @@
         @yield('content')
     </main>
 </div>
+@yield('javascripts')
 </body>
 </html>

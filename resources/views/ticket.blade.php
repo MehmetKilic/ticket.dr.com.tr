@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('styles')
+    <link href="{{ asset('public/css/bootstrap-tagsinput.css') }}" rel="stylesheet">
+@endsection
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -8,7 +11,7 @@
                     <div class="panel-heading lead" style="text-align: center;">Ticket Oluştur</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('ticket') }}" onkeydown="return event.key != 'Enter';">
+                        <form class="form-horizontal" method="POST" action="{{ route('ticket') }}">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -43,7 +46,7 @@
                                 <label for="text" class="col-md-12 control-label">Etiket</label>
 
                                 <div class="col-md-12">
-                                    <input type="text" value="" data-role="tagsinput" id="tags" class="form-control">
+                                    <input type="text" value="" name="tags" data-role="tagsinput" id="tags" class="form-control">
                                     @if ($errors->has('tag'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('tags') }}</strong>
@@ -65,4 +68,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('javascripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
 @endsection

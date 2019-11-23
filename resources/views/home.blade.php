@@ -9,8 +9,8 @@
     <div class="row">
         <div class="col-md-12 col-md-offset-2">
             <div class="panel panel-default">
+                <a href="{{ route('dashboard') }}" class="btn btn-info" style="float:right;margin-bottom:3%;color:white;">Dashboard'a Dön</a>
                 <div class="panel-heading"><h2>Tüm Ticketlar</h2></div>
-
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -32,6 +32,7 @@
                                 <th>Durum</th>
                                 <th style="display: none;">Durum</th>
                                 <th>İşlem Yap</th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -62,7 +63,7 @@
 @endsection
 
 @section('javascripts')
-    <script type="text/javascript" charset="utf8" src="public/js/dataTables.js" defer></script>
+    <script type="text/javascript" charset="utf8" src="{{ asset('public/js/dataTables.js')}}" defer></script>
     <script>
         $(document).ready( function () {
             var table = $('#datatable').DataTable();

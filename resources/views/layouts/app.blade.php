@@ -13,7 +13,6 @@
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="{{ asset('public/js/app.js') }}" defer></script>
-    <script src="{{ asset('public/js/bootstrap-tagsinput.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -23,7 +22,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/css/bootstrap-tagsinput.css') }}" rel="stylesheet">
     @yield('styles')
 </head>
 <body>
@@ -67,8 +65,6 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                <a class="dropdown-item" href="{{ route('profile') }}">Profili Düzenle</a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

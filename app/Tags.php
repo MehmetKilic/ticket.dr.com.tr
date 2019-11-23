@@ -2,7 +2,7 @@
 namespace App;
 use Illuminate\Database\Eloquent\Model;
 
-class Tickets extends Model
+class Tags extends Model
 {
 
     /**
@@ -11,14 +11,12 @@ class Tickets extends Model
      * @var array
      */
 
-    protected $table    = "tickets";
+    protected $table    = "tags";
 
     protected $fillable = [
         "id",
-        "title",
-        "content",
-        "ip",
-        "status",
+        "ticket_id",
+        "tag",
         "created_at",
         "updated_at"
     ];

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use \Yajra\Datatables\Datatables;
 use App\Tickets;
+use App\Tags;
 
 class TicketController
 {
@@ -34,9 +35,17 @@ class TicketController
         $ticketAdd = Tickets::create([
             "title"             => $request->get('title'),
             "content"           => $request->get('content'),
-            "ip"                => request()->ip(),
-            "tags"              => $request->get('tags')
+            "ip"                => request()->ip()
         ]);
+
+        // Etiketleri sisteme aktarıyoruz
+        $tags = explode(',', $request->get('tags'));
+        foreach ($tags as $tag){
+            $tagInsert = Tags::create([
+                'ticket_id'         => $ticketAdd->id,
+                'tag'               => $tag
+            ]);
+        }
 
         if( $ticketAdd ){
             return redirect(route('ticket'))->with('success', 'Başarıyla kaydınız oluşturuldu.');
@@ -44,15 +53,5 @@ class TicketController
         else {
             return redirect(route('rooms'))->with('error', 'Ne yazık ki kayıt oluşturulamadı, lütfen bu durumu sistem yöneticisi ile paylaşınız.');
         }
-    }
-
-    /**
-     * @param Request $request
-     */
-    public function confirm(Request $request){
-        $ticketConfirm = Tickets::where('id', '=', $request->get('id'))->update([
-            "status"         => 0
-        ]);
-        return $request->get('id');
     }
 }

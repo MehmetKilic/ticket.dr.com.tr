@@ -17,9 +17,12 @@ Route::get('/', function () {
 
 Route::get('/ticket', 'TicketController@showForm')->name('ticket');
 Route::post('/ticket', 'TicketController@store')->name('ticketPost');
-Route::post('/ticket/confirm', 'TicketController@confirm')->name('ticket.confirm');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile', 'HomeController@profile')->name('profile');
+Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+Route::get('/ticket/detail/{id}', 'HomeController@ticketDetail')->name('ticket.detail');
+Route::post('/ticket/confirm', 'HomeController@confirm')->name('ticket.confirm');
+Route::get('/tag/detail/{name}', 'HomeController@tagDetail')->name('tag.detail');
